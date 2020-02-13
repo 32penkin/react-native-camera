@@ -63,7 +63,7 @@
 
 - (id)initWithManager:(RCTCameraManager*)manager bridge:(RCTBridge *)bridge
 {
-  
+
   if ((self = [super init])) {
     self.manager = manager;
     self.bridge = bridge;
@@ -102,10 +102,10 @@
 
 - (void)removeFromSuperview
 {
-  [self.manager stopSession];
   [super removeFromSuperview];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
   [UIApplication sharedApplication].idleTimerDisabled = _previousIdleTimerDisabled;
+  [self.manager stopSession];
 }
 
 - (void)orientationChanged:(NSNotification *)notification{
